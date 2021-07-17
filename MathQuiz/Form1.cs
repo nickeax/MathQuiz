@@ -48,6 +48,12 @@ namespace MathQuiz
             timer1.Start(); 
         }
 
+        private bool CheckTheAnswer()
+        {
+            if (addend1 + addend2 == numCtrlSum.Value) return true;
+            else return false;
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             StartTheQuiz();
@@ -56,6 +62,13 @@ namespace MathQuiz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (CheckTheAnswer())
+            {
+                timer1.Stop();
+                MessageBox.Show("You got all the answers right!", "Congratulations!");
+                btnStart.Enabled = true;
+            }
+
             if (timeLeft > 0)
             {
                 // Display the new timeLeft
