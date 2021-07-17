@@ -29,6 +29,7 @@ namespace MathQuiz
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPlusLeft = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@ namespace MathQuiz
             this.label12 = new System.Windows.Forms.Label();
             this.lblDividedLeft = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numCtrlSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCtrlDifference)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCtrlProduct)).BeginInit();
@@ -281,6 +283,11 @@ namespace MathQuiz
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +353,7 @@ namespace MathQuiz
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblDividedLeft;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

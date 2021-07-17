@@ -18,6 +18,10 @@ namespace MathQuiz
 
         int addend1, addend2;
 
+        // This integer variable keeps track of the
+        // remaining time
+        int timeLeft;
+
         /// <summary>
         /// Start the quiz by filling in all of the problems
         /// and starting the timer
@@ -39,13 +43,36 @@ namespace MathQuiz
             // This step makes sure its value is zero before
             // adding any values to it.
             numCtrlSum.Value = 0;
-
+            timeLeft = 30;
+            lblTime.Text = "30 seconds";
+            timer1.Start(); 
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             StartTheQuiz();
             btnStart.Enabled = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                // Display the new timeLeft
+                // by updating the TimeLeft label.
+                timeLeft -= 1;
+                lblTime.Text = $"{timeLeft} seconds";
+            }
+            else
+            {
+                // If the user ran out of time, stop the timer, show
+                // a MessageBox, and fill in the answers.
+                timer1.Stop();
+                lblTime.Text = "Time's up!";
+                MessageBox.Show("You didn't finish in time.", "Sorry!");
+                numCtrlSum.Value = addend1 + addend2;
+                btnStart.Enabled = true;
+            }
         }
 
         public Form1()
